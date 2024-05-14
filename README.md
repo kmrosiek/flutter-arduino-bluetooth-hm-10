@@ -1,4 +1,4 @@
-# Flutter to Arduino via Bluetooth
+# Flutter to Arduino via Bluetooth HM-10
 
 This project demonstrates how to connect a Flutter application to an Arduino via Bluetooth using the HM-10 module.
 

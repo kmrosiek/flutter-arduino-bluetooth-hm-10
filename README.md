@@ -5,18 +5,26 @@ This project demonstrates how to connect a Flutter application to an Arduino via
 ## Table of Contents
 - [Introduction](#introduction)
 - [Preview](#preview)
-- [Project File Structure](#project-file-structure)
+- [Features](#features)
+- [App Structure](#project-file-structure)
 - [Arduino Circuit](#arduino-circuit)
 
 ## Introduction
 
 This project demonstrates how to connect a Flutter application to an Arduino via Bluetooth using the HM-10 module.
+The Locker Guessing Game is a unique application where you need to guess a number shown in binary form through LEDs. The twist? You have to speak the number out loud! Utilizing advanced speech recognition, the app captures your spoken response, communicates it to an Arduino device via Bluetooth, and checks if your guess is correct.
 
 ## Preview
 
 ![Preview of the Flutter application connecting to Arduino](readme_assets/preview.gif)
 
-## Project File Structure
+## Features
+
+- **Speech Recognition**: Speak your guess and let the app do the rest. No typing needed!
+- **Bluetooth Communication**: Utilizes the [flutter_blue_plus](https://pub.dev/packages/flutter_blue_plus) library for seamless Bluetooth communication.
+- **Interactive UI**: Visual feedback enhanced with animations using the Lottie library.
+
+## App Structure
 
 You can download and view the project file structure:
 ![File Structure](readme_assets/file_structure.png).

@@ -14,7 +14,7 @@ This project demonstrates how to connect a Flutter application to an Arduino via
 
 ## Preview
 
-![Preview of the Flutter application connecting to Arduino](readme_assets/review.gif)
+![Preview of the Flutter application connecting to Arduino](readme_assets/preview.gif)
 
 ## Project File Structure
 

@@ -28,6 +28,7 @@ class Home extends StatelessWidget {
                         return errorMessageOrCharacteristic
                             .fold((errorMessage) => Text(errorMessage),
                                 (characteristic) {
+                          //TODO replace with getit
                           final ILockerRepository lockerRepository =
                               LockerRepository(characteristic);
                           return BlocProvider(
@@ -37,10 +38,14 @@ class Home extends StatelessWidget {
                           );
                         });
                       },
-                      disconnected: (String? message) => ElevatedButton(
-                            child: const Text('Connect to the lock'),
-                            onPressed: () =>
-                                context.read<ConnectionCubit>().connect(),
+                      disconnected: (String? message) => Column(
+                            children: [
+                              ElevatedButton(
+                                child: const Text('Connect to the lock'),
+                                onPressed: () =>
+                                    context.read<ConnectionCubit>().connect(),
+                              ),
+                            ],
                           ),
                       connecting: () =>
                           LoadingAnimationWidget.staggeredDotsWave(

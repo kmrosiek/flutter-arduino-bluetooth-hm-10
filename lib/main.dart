@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ble_sample/application/connection_cubit/connection_cubit.dart';
 import 'package:flutter_ble_sample/domain/i_connection_repository.dart';
 import 'package:flutter_ble_sample/infrastructure/connection_repository.dart';
+import 'package:flutter_ble_sample/presentation/bluetooth_status_observer_screen/bluetooth_adapter_state_observer.dart';
 import 'package:flutter_ble_sample/presentation/bluetooth_status_observer_screen/bluetooth_status_observer_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,10 +20,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Flutter BLE Demo',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
+        navigatorObservers: [BluetoothAdapterStateObserver()],
         home: BlocProvider(
             create: (context) => ConnectionCubit(_connectionRepository)
               ..listenToConnectionState(),

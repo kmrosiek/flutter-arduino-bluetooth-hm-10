@@ -28,7 +28,7 @@ class ConnectionCubit extends Cubit<ConnectionState> {
         await _connectionRepository.discoverServices();
         emit(const ConnectionState.connected());
       } else if (connectionState == BLEConnectionState.disconnected) {
-        emit(const ConnectionState.disconnected());
+        emit(ConnectionState.disconnected(message: state.messageIfAny));
       }
     });
   }

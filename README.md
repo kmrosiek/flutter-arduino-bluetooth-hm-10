@@ -18,7 +18,7 @@ This project demonstrates how to connect a Flutter application to an Arduino via
 
 ## Project File Structure
 
-You can download and view the project file structure [here](readme_assets/file_structure.pdf).
+You can download and view the project file structure [here](readme_assets/file_structure.png).
 
 ## Arduino Circuit
 

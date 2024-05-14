@@ -20,9 +20,9 @@ The Locker Guessing Game is a unique application where you need to guess a numbe
 
 ## Features
 
-- **Speech Recognition**: Speak your guess and let the app do the rest. No typing needed!
+- **Speech Recognition**: Speak your guess and let the app do the rest. No typing needed! Done with [speech_to_text](https://pub.dev/packages/speech_to_text)
 - **Bluetooth Communication**: Utilizes the [flutter_blue_plus](https://pub.dev/packages/flutter_blue_plus) library for seamless Bluetooth communication.
-- **Interactive UI**: Visual feedback enhanced with animations using the Lottie library.
+- **Interactive UI**: Visual feedback enhanced with animations using the [Lottie](https://pub.dev/packages/lottie) library.
 
 ## App Structure
 

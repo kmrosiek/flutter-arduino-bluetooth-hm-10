@@ -5,16 +5,22 @@ PODS:
   - fluttertoast (0.0.2):
     - Flutter
     - Toast
+  - speech_to_text (0.0.1):
+    - Flutter
+    - Try
   - Toast (4.1.1)
+  - Try (2.1.1)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_blue_plus (from `.symlinks/plugins/flutter_blue_plus/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
+  - speech_to_text (from `.symlinks/plugins/speech_to_text/ios`)
 
 SPEC REPOS:
   trunk:
     - Toast
+    - Try
 
 EXTERNAL SOURCES:
   Flutter:
@@ -23,12 +29,16 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_blue_plus/ios"
   fluttertoast:
     :path: ".symlinks/plugins/fluttertoast/ios"
+  speech_to_text:
+    :path: ".symlinks/plugins/speech_to_text/ios"
 
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_blue_plus: 4837da7d00cf5d441fdd6635b3a57f936778ea96
   fluttertoast: 77ff8760d90ff5041a97e3d0c0ecaaa8472524d2
+  speech_to_text: b43a7d99aef037bd758ed8e45d79bbac035d2dfe
   Toast: 1f5ea13423a1e6674c4abdac5be53587ae481c4e
+  Try: 5ef669ae832617b3cee58cb2c6f99fb767a4ff96
 
 PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
 

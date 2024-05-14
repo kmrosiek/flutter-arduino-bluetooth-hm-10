@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:math';
+import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
@@ -9,49 +9,37 @@ part 'locker_state.dart';
 part 'locker_cubit.freezed.dart';
 
 class LockerCubit extends Cubit<LockerState> {
-  LockerCubit() : super(const LockerState.unresolved());
+  LockerCubit(this.characteristic) : super(const LockerState.unresolved());
 
   StreamSubscription<List<int>>? _listener;
-  /*BluetoothCharacteristic characteristic = BluetoothCharacteristic(
-      remoteId: DeviceIdentifier(''),
-      serviceUuid: Guid('input'),
-      characteristicUuid: Guid('input'));*/
+  final BluetoothCharacteristic characteristic;
 
-  //BluetoothCharacteristic get c => characteristic;
+  BluetoothCharacteristic get c => characteristic;
 
   void subscribeToLockerResults() async {
-    /*await c.setNotifyValue(c.isNotifying == false);
+    await c.setNotifyValue(c.isNotifying == false);
     _listener = c.onValueReceived.listen((value) async {
-      print("Raw value received: $value");
-      if (value.isNotEmpty) {
-        if (value.first == 1) {
-          // success
-        } else {
-          // failure
-        }
-        //String message = utf8.decode(value);
-        //_messagebuffer = "$message\n";
-        //print("Received message: $message");
-      } else {
-        print("Received empty value");
+      if (value.isEmpty) {
+        log("Received empty value");
+        return;
       }
-    });*/
+
+      if (value.first == 49) {
+        emit(const LockerState.success());
+      } else if (value.first == 50) {
+        emit(const LockerState.beginning());
+      } else {
+        emit(const LockerState.failure());
+      }
+    });
   }
 
   void tryToOpen({required int lockerPin}) {
-    //c.write([lockerPin], withoutResponse: c.properties.writeWithoutResponse);
     emit(const LockerState.unresolved());
-    final random = Random();
-    if (random.nextBool()) {
-      emit(const LockerState.success());
-    } else {
-      emit(const LockerState.failure());
-    }
+    c.write([lockerPin], withoutResponse: c.properties.writeWithoutResponse);
   }
 
-  void reset() {
-    emit(const LockerState.unresolved());
-  }
+  void reset() => emit(const LockerState.beginning());
 
   @override
   Future<void> close() {

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter_ble_sample/presentation/common/exceptions/pretty_exception.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -10,41 +11,54 @@ part 'connection_state.dart';
 part 'connection_cubit.freezed.dart';
 
 class ConnectionCubit extends Cubit<ConnectionState> {
-  ConnectionCubit() : super(const ConnectionState.connected());
+  ConnectionCubit() : super(const ConnectionState.disconnected());
 
-  final BluetoothDevice device = BluetoothDevice(
-      remoteId: const DeviceIdentifier('772c42a6-ba1a-40c2-a432-27936eafa798'));
+  static const String deviceId = String.fromEnvironment('BLE_DEVICE_ID');
+  static const String serviceIdStr128 = '0000ffe0-0000-1000-8000-00805f9b34fb';
+  static const String characteristicIdStr128 =
+      '0000ffe1-0000-1000-8000-00805f9b34fb';
+  final BluetoothDevice device =
+      BluetoothDevice(remoteId: const DeviceIdentifier(deviceId));
   StreamSubscription<BluetoothConnectionState>? _connectionStateSubscription;
 
   void listenToConnectionState() {
     if (_connectionStateSubscription != null) return;
     _connectionStateSubscription =
         device.connectionState.listen((connectionState) async {
-      print('ConnectionState: $connectionState');
+      log('ConnectionState: $connectionState');
       if (connectionState == BluetoothConnectionState.connected) {
-        //_services = []; // must rediscover services
+        await device.discoverServices();
         emit(const ConnectionState.connected());
+      } else if (connectionState == BluetoothConnectionState.disconnected) {
+        emit(const ConnectionState.disconnected());
       }
-      if (connectionState == BluetoothConnectionState.connected) {
-        //&&_rssi == null) {
-        //_rssi = await device.readRssi();
-      }
-      /*if (mounted) {
-        setState(() {});
-      }*/
     });
   }
 
-  void connect() async {
-    print('connecting');
-    //emit(const ConnectionState.connecting());
+  Either<String, BluetoothCharacteristic> get getCharacteristics {
     try {
-      //await device.connect(timeout: const Duration(seconds: 2));
+      final service = device.servicesList.firstWhere(
+          (service) => service.serviceUuid.str128 == serviceIdStr128);
+      final characteristic = service.characteristics.firstWhere(
+          (characteristic) =>
+              characteristic.characteristicUuid.str128 ==
+              characteristicIdStr128);
+      return Right(characteristic);
+    } catch (e) {
+      final errorMessage =
+          Pretty.exception('Could not get characteristics ', e);
+      log(errorMessage);
+      return Left(errorMessage);
+    }
+  }
 
-      emit(state.nextState());
+  void connect() async {
+    emit(const ConnectionState.connecting());
+    try {
+      await device.connect(timeout: const Duration(seconds: 2));
     } catch (e) {
       log(Pretty.exception('Exception when connecting:', e));
-      emit(const ConnectionState.disconnected(message: 'Could not connect.'));
+      emit(ConnectionState.disconnected(message: Pretty.exception('', e)));
     }
   }
 

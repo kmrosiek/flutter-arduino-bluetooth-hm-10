@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LockerState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() beginning,
     required TResult Function() unresolved,
     required TResult Function() success,
     required TResult Function() failure,
@@ -25,6 +26,7 @@ mixin _$LockerState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? beginning,
     TResult? Function()? unresolved,
     TResult? Function()? success,
     TResult? Function()? failure,
@@ -32,6 +34,7 @@ mixin _$LockerState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? beginning,
     TResult Function()? unresolved,
     TResult Function()? success,
     TResult Function()? failure,
@@ -40,6 +43,7 @@ mixin _$LockerState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Beginning value) beginning,
     required TResult Function(_UnResolved value) unresolved,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
@@ -47,6 +51,7 @@ mixin _$LockerState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Beginning value)? beginning,
     TResult? Function(_UnResolved value)? unresolved,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
@@ -54,6 +59,7 @@ mixin _$LockerState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Beginning value)? beginning,
     TResult Function(_UnResolved value)? unresolved,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
@@ -78,6 +84,120 @@ class _$LockerStateCopyWithImpl<$Res, $Val extends LockerState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$BeginningImplCopyWith<$Res> {
+  factory _$$BeginningImplCopyWith(
+          _$BeginningImpl value, $Res Function(_$BeginningImpl) then) =
+      __$$BeginningImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$BeginningImplCopyWithImpl<$Res>
+    extends _$LockerStateCopyWithImpl<$Res, _$BeginningImpl>
+    implements _$$BeginningImplCopyWith<$Res> {
+  __$$BeginningImplCopyWithImpl(
+      _$BeginningImpl _value, $Res Function(_$BeginningImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$BeginningImpl implements _Beginning {
+  const _$BeginningImpl();
+
+  @override
+  String toString() {
+    return 'LockerState.beginning()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$BeginningImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() beginning,
+    required TResult Function() unresolved,
+    required TResult Function() success,
+    required TResult Function() failure,
+  }) {
+    return beginning();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? beginning,
+    TResult? Function()? unresolved,
+    TResult? Function()? success,
+    TResult? Function()? failure,
+  }) {
+    return beginning?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? beginning,
+    TResult Function()? unresolved,
+    TResult Function()? success,
+    TResult Function()? failure,
+    required TResult orElse(),
+  }) {
+    if (beginning != null) {
+      return beginning();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Beginning value) beginning,
+    required TResult Function(_UnResolved value) unresolved,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+  }) {
+    return beginning(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Beginning value)? beginning,
+    TResult? Function(_UnResolved value)? unresolved,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+  }) {
+    return beginning?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Beginning value)? beginning,
+    TResult Function(_UnResolved value)? unresolved,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (beginning != null) {
+      return beginning(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Beginning implements LockerState {
+  const factory _Beginning() = _$BeginningImpl;
 }
 
 /// @nodoc
@@ -118,6 +238,7 @@ class _$UnResolvedImpl implements _UnResolved {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() beginning,
     required TResult Function() unresolved,
     required TResult Function() success,
     required TResult Function() failure,
@@ -128,6 +249,7 @@ class _$UnResolvedImpl implements _UnResolved {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? beginning,
     TResult? Function()? unresolved,
     TResult? Function()? success,
     TResult? Function()? failure,
@@ -138,6 +260,7 @@ class _$UnResolvedImpl implements _UnResolved {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? beginning,
     TResult Function()? unresolved,
     TResult Function()? success,
     TResult Function()? failure,
@@ -152,6 +275,7 @@ class _$UnResolvedImpl implements _UnResolved {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Beginning value) beginning,
     required TResult Function(_UnResolved value) unresolved,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
@@ -162,6 +286,7 @@ class _$UnResolvedImpl implements _UnResolved {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Beginning value)? beginning,
     TResult? Function(_UnResolved value)? unresolved,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
@@ -172,6 +297,7 @@ class _$UnResolvedImpl implements _UnResolved {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Beginning value)? beginning,
     TResult Function(_UnResolved value)? unresolved,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
@@ -226,6 +352,7 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() beginning,
     required TResult Function() unresolved,
     required TResult Function() success,
     required TResult Function() failure,
@@ -236,6 +363,7 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? beginning,
     TResult? Function()? unresolved,
     TResult? Function()? success,
     TResult? Function()? failure,
@@ -246,6 +374,7 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? beginning,
     TResult Function()? unresolved,
     TResult Function()? success,
     TResult Function()? failure,
@@ -260,6 +389,7 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Beginning value) beginning,
     required TResult Function(_UnResolved value) unresolved,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
@@ -270,6 +400,7 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Beginning value)? beginning,
     TResult? Function(_UnResolved value)? unresolved,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
@@ -280,6 +411,7 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Beginning value)? beginning,
     TResult Function(_UnResolved value)? unresolved,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
@@ -334,6 +466,7 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() beginning,
     required TResult Function() unresolved,
     required TResult Function() success,
     required TResult Function() failure,
@@ -344,6 +477,7 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? beginning,
     TResult? Function()? unresolved,
     TResult? Function()? success,
     TResult? Function()? failure,
@@ -354,6 +488,7 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? beginning,
     TResult Function()? unresolved,
     TResult Function()? success,
     TResult Function()? failure,
@@ -368,6 +503,7 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Beginning value) beginning,
     required TResult Function(_UnResolved value) unresolved,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
@@ -378,6 +514,7 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Beginning value)? beginning,
     TResult? Function(_UnResolved value)? unresolved,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
@@ -388,6 +525,7 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Beginning value)? beginning,
     TResult Function(_UnResolved value)? unresolved,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,

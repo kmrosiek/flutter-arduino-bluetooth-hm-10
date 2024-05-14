@@ -12,9 +12,6 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: ElevatedButton(
-          child: const Text('Connect to the lock'),
-          onPressed: () => context.read<ConnectionCubit>().connect()),
       body: BlocBuilder<ConnectionCubit, ConnectionState>(
         builder: (context, state) {
           return Column(
@@ -23,11 +20,18 @@ class Home extends StatelessWidget {
               children: [
                 Center(
                   child: state.when(
-                      connected: () => BlocProvider(
-                            create: (context) =>
-                                LockerCubit()..subscribeToLockerResults(),
-                            child: const LottieAnimationWidget(),
-                          ),
+                      connected: () {
+                        final errorMessageOrCharacteristic =
+                            context.read<ConnectionCubit>().getCharacteristics;
+                        return errorMessageOrCharacteristic.fold(
+                            (errorMessage) => Text(errorMessage),
+                            (characteristic) => BlocProvider(
+                                  create: (context) =>
+                                      LockerCubit(characteristic)
+                                        ..subscribeToLockerResults(),
+                                  child: const LockerWidget(),
+                                ));
+                      },
                       disconnected: (String? message) => ElevatedButton(
                             child: const Text('Connect to the lock'),
                             onPressed: () =>

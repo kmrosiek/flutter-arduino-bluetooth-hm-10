@@ -26,6 +26,10 @@
 	<true/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>We need BT access because it's a BT App.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Speech recognition is needed to open the locker</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Microphone is needed for speech recognition</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>We need BT access because it's a BT App.</string>
 	<key>UILaunchStoryboardName</key>

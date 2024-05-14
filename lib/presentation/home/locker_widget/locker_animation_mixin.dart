@@ -32,9 +32,9 @@ mixin LockerAnimationMixin<T extends StatefulWidget>
         duration: const Duration(milliseconds: 2000));
   }
 
-  void playBlink() {
+  Future<void> playBlink() async {
     controller.value = _beforeBlink;
-    controller
+    await controller
         .animateTo(_afterBlink, duration: const Duration(milliseconds: 500))
         .then((value) => controller.animateBack(_beforeBlink,
             duration: const Duration(milliseconds: 500)));

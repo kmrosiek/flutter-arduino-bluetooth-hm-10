@@ -6,24 +6,6 @@ class AppToast {
 
   static void dispose() => fToast.removeCustomToast();
 
-  /*static void show(
-    BuildContext context,
-    String text, {
-    bool isError = false,
-    bool isBottom = true,
-  }) {
-    fToast.init(context);
-    fToast.showToast(
-      child: ToastWithCancelButton(
-        text: text,
-        isError: isError,
-        onCancelPressed: () => fToast.removeCustomToast(),
-      ),
-      gravity: isBottom ? ToastGravity.BOTTOM : ToastGravity.CENTER,
-      toastDuration: const Duration(seconds: 4),
-    );
-  }*/
-
   static void show(
     BuildContext context,
     String text, {
@@ -61,11 +43,4 @@ class AppToast {
       toastDuration: toastDuration,
     );
   }
-
-  /*static void showError(
-    BuildContext context,
-    String text, {
-    bool isBottom = true,
-  }) =>
-      show(context, text, isError: true, isBottom: isBottom);*/
 }

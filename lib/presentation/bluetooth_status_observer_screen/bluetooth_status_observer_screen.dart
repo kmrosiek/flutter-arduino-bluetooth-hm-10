@@ -30,7 +30,6 @@ class _BluetoothStatusObserverScreenState
     _adapterStateStateSubscription =
         FlutterBluePlus.adapterState.listen((state) {
       _adapterState = state;
-      print('state update');
       if (mounted) {
         setState(() {});
       }

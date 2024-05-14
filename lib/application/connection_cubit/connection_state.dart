@@ -13,15 +13,4 @@ sealed class ConnectionState with _$ConnectionState {
       disconnected: (maybeMessage) => maybeMessage,
       connecting: () => 'Connecting',
       connected: () => null);
-
-  ConnectionState nextState() {
-    if (this is _Disconnected) {
-      return const ConnectionState.connecting();
-    } else if (this is _Connecting) {
-      return const ConnectionState.connected();
-    } else {
-      // For _Connected, wrap around to the beginning
-      return const ConnectionState.disconnected();
-    }
-  }
 }

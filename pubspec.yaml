@@ -31,6 +31,7 @@ dependencies:
   bloc: ^8.1.4
   build_runner: ^2.4.9
   cupertino_icons: ^1.0.6
+  dartz: ^0.10.1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.5

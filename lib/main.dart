@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ble_sample/presentation/bluetooth_off_screen/bluetooth_off_screen.dart';
+import 'package:flutter_ble_sample/application/connection_cubit/connection_cubit.dart';
+import 'package:flutter_ble_sample/presentation/home/home.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,6 +18,9 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const BluetoothOffScreen());
+        home: BlocProvider(
+          create: (context) => ConnectionCubit(),
+          child: const Home(),
+        )); // const BluetoothStatusObserverScreen());
   }
 }

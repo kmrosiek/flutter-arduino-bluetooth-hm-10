@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart' hide ConnectionState;
 import 'package:flutter_ble_sample/application/connection_cubit/connection_cubit.dart';
 import 'package:flutter_ble_sample/application/locker_cubit/locker_cubit.dart';
+import 'package:flutter_ble_sample/domain/i_locker_repository.dart';
+import 'package:flutter_ble_sample/infrastructure/locker_repository.dart';
 import 'package:flutter_ble_sample/presentation/common/constants/app_colors.dart';
 import 'package:flutter_ble_sample/presentation/home/locker_widget/locker_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,14 +25,17 @@ class Home extends StatelessWidget {
                       connected: () {
                         final errorMessageOrCharacteristic =
                             context.read<ConnectionCubit>().getCharacteristics;
-                        return errorMessageOrCharacteristic.fold(
-                            (errorMessage) => Text(errorMessage),
-                            (characteristic) => BlocProvider(
-                                  create: (context) =>
-                                      LockerCubit(characteristic)
-                                        ..subscribeToLockerResults(),
-                                  child: const LockerWidget(),
-                                ));
+                        return errorMessageOrCharacteristic
+                            .fold((errorMessage) => Text(errorMessage),
+                                (characteristic) {
+                          final ILockerRepository lockerRepository =
+                              LockerRepository(characteristic);
+                          return BlocProvider(
+                            create: (context) => LockerCubit(lockerRepository)
+                              ..subscribeToLockerResults(),
+                            child: const LockerWidget(),
+                          );
+                        });
                       },
                       disconnected: (String? message) => ElevatedButton(
                             child: const Text('Connect to the lock'),

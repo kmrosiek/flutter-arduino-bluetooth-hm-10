@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_ble_sample/presentation/common/app_toast/app_toast.dart';
-import 'package:flutter_ble_sample/presentation/common/exceptions/pretty_exception.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
 class BluetoothTurnOnAndroidButton extends StatelessWidget {
@@ -21,7 +20,7 @@ class BluetoothTurnOnAndroidButton extends StatelessWidget {
             }
           } catch (e) {
             if (context.mounted) {
-              AppToast.show(context, Pretty.exception("Error Turning On:", e));
+              AppToast.show(context, "Error Turning On: $e");
             }
           }
         },

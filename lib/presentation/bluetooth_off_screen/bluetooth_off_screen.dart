@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ble_sample/presentation/bluetooth_off_screen/widgets/bluetooth_off_screen_title.dart';
 import 'package:flutter_ble_sample/presentation/common/app_toast/app_toast.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
-import 'package:flutter_ble_sample/presentation/common/exceptions/pretty_exception.dart';
 
 class BluetoothOffScreen extends StatelessWidget {
   const BluetoothOffScreen({super.key, this.adapterState});
@@ -31,7 +30,7 @@ class BluetoothOffScreen extends StatelessWidget {
             }
           } catch (e) {
             if (context.mounted) {
-              AppToast.show(context, Pretty.exception("Error Turning On:", e));
+              AppToast.show(context, "Error Turning On: $e");
             }
           }
         },

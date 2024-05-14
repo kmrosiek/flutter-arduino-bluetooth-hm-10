@@ -1,0 +1,4 @@
+enum BLEConnectionState {
+  connected,
+  disconnected,
+}

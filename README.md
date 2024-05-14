@@ -1,16 +1,27 @@
-# flutter_ble_sample
+# Flutter to Arduino via Bluetooth
 
-A new Flutter project.
+This project demonstrates how to connect a Flutter application to an Arduino via Bluetooth using the HM-10 module.
 
-## Getting Started
+## Table of Contents
+- [Introduction](#introduction)
+- [Preview](#preview)
+- [Project File Structure](#project-file-structure)
+- [Arduino Circuit](#arduino-circuit)
 
-This project is a starting point for a Flutter application.
+## Introduction
 
-A few resources to get you started if this is your first Flutter project:
+This project demonstrates how to connect a Flutter application to an Arduino via Bluetooth using the HM-10 module.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Preview
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Preview of the Flutter application connecting to Arduino](preview.gif)
+
+## Project File Structure
+
+You can download and view the project file structure [here](readme_assets/file_structure.pdf).
+
+## Arduino Circuit
+
+Below is the image of the Arduino circuit used in this project.
+
+![Arduino Circuit](readme_assets/arduino_circuit.png)
